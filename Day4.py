@@ -2,6 +2,58 @@
 import math
 import random
 
+rock = '''
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+'''
+
+paper = '''
+    _______
+---'   ____)____
+          ______)
+          _______)
+         _______)
+---.__________)
+'''
+
+scissors = '''
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+'''
+
+# Write your code below this line 👇
+
+
+# 🚨 Don't change the code below 👇
+row1 = ["⬜️", "⬜️", "⬜️"]
+row2 = ["⬜️", "⬜️", "⬜️"]
+row3 = ["⬜️", "⬜️", "⬜️"]
+map = [row1, row2, row3]
+print(f"{row1}\n{row2}\n{row3}")
+position = input("Where do you want to put the treasure? ")
+# 🚨 Don't change the code above 👆
+# Write your code below this row 👇
+print(type(position))
+Choice = list(position)
+horizontal = int(position[0])
+vertical = int(position[1])
+
+map[vertical - 1][horizontal - 1] = "X"
+
+# Write your code above this row 👆
+
+# 🚨 Don't change the code below 👇
+print(f"{row1}\n{row2}\n{row3}")
+
+exit()
 # Banker Roulette
 # You are going to write a program which will select a random name from a list of names.
 # The person selected will have to pay for everybody's food bill.
@@ -19,7 +71,7 @@ names = names_string.split(", ")  # This creates a list people available
 
 total_guys = len(names)
 
-unlucky_guy = random.randint(0, total_guys-1)
+unlucky_guy = random.randint(0, total_guys - 1)
 print(names[unlucky_guy], " This unlucky guys has to pay for everyone")
 
 exit()
