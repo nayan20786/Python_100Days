@@ -21,78 +21,8 @@
 from art import blackjack_logo
 import random
 
-print(blackjack_logo)
+# My Code is commented at the end,It has few bugs.I will try this challenge again with fresh mind
 
-cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
-
-your_pulls = []
-computer_pull = []
-
-
-def compare():
-    if sum(your_pulls) > sum(computer_pull):
-        print("You won ! Suck it Vacuum Cleaner")
-    elif sum(your_pulls) == sum(computer_pull):
-        print("draw")
-    else:
-        print("Humanity Lost! The age of Machines is here🦾")
-
-
-def deal_card(i):
-    for a in range(i):
-        human_card_value = random.choice(cards)
-        your_pulls.append(human_card_value)
-        computer_card_value = random.choice(cards)
-        computer_pull.append(computer_card_value)
-    print(your_pulls)
-    print(computer_pull)
-
-    if sum(your_pulls) == 21:
-        print("You win! Black Jack!☕")
-        return
-    elif sum(computer_pull) == 21:
-        print("Computer Wins ! Skynet will take over🛸")
-        return
-    else:
-        pass
-
-    if sum(your_pulls) < 21:
-        pull_again = input("do you wanna pull again?")
-        while pull_again == "yes":
-            human_card_value = random.choice(cards)
-            if 11 < sum(your_pulls) < 21:
-                if human_card_value == 11:
-                    human_card_value = 1
-            your_pulls.append(human_card_value)
-            print(your_pulls)
-            if sum(your_pulls) < 21:
-                pull_again = input("do you wanna pull again?")
-            elif sum(your_pulls) == 21:
-                print("You win! Black Jack")
-                return
-            else:
-                print("You lose! Your total exceeded blackjack")
-                return
-            sum(your_pulls)
-
-    if sum(computer_pull) < 17:
-        print(sum(computer_pull))
-        while sum(computer_pull) < 17:
-            computer_card_value = random.choice(cards)
-            if 11 < sum(computer_pull) < 21:
-                if computer_card_value == 11:
-                    computer_card_value = 1
-            computer_pull.append(computer_card_value)
-        if sum(computer_pull) == 21:
-            print("Computer Wins ! Skynet will take over🛸")
-        elif sum(computer_pull) > 21:
-            print("You lose loser Machines, Less 😎 goo")
-        print(sum(computer_pull))
-
-    compare()
-
-
-deal_card(2)
 
 # Hint 1: Go to this website and try out the Blackjack game:
 #   https://games.washingtonpost.com/games/blackjack/
@@ -144,3 +74,74 @@ deal_card(2)
 
 # Hint 14: Ask the user if they want to restart the game.
 # If they answer yes, clear the console and start a new game of blackjack and show the logo from art.py.
+
+#   First Attempt at Creating Black Jack::
+"""
+
+def compare():
+  if sum(your_pulls) > sum(computer_pull):
+      print("You won ! Suck it Vacuum Cleaner")
+  elif sum(your_pulls) == sum(computer_pull):
+      print("draw")
+  else:
+      print("Humanity Lost! The age of Machines is here🦾")
+
+
+def deal_card(i):
+  is_game_over = False
+  for a in range(i):
+      human_card_value = random.choice(cards)
+      your_pulls.append(human_card_value)
+      computer_card_value = random.choice(cards)
+      computer_pull.append(computer_card_value)
+  print(your_pulls)
+  print(computer_pull)
+
+  if sum(your_pulls) == 21:
+      print("You win! Black Jack!☕")
+      return
+  elif sum(computer_pull) == 21:
+      print("Computer Wins ! Skynet will take over🛸")
+      return
+  else:
+      pass
+
+  game = "on"
+  while game == "on":
+      if sum(your_pulls) < 21:
+          while not is_game_over:
+              human_card_value = random.choice(cards)
+              if 11 < sum(your_pulls) < 21:
+                  if human_card_value == 11:
+                      human_card_value = 1
+              your_pulls.append(human_card_value)
+              print(your_pulls)
+              if sum(your_pulls) < 21:
+                  pull_again = input("do you wanna pull again?")
+              elif sum(your_pulls) == 21:
+                  print("You win! Black Jack")
+                  return
+              else:
+                  is_game_over = True
+                  print("You lose! Your total exceeded blackjack")
+                  return
+              sum(your_pulls)
+
+      if sum(computer_pull) < 17:
+          while sum(computer_pull) < 17:
+              computer_card_value = random.choice(cards)
+              if 11 < sum(computer_pull) < 21:
+                  computer_pull.append(computer_card_value)
+
+          if sum(computer_pull) == 21:
+              print("Computer Wins ! Skynet will take over🛸")
+          elif sum(computer_pull) > 21:
+              print("You lose loser Machines, Less 😎 goo")
+          print(sum(computer_pull))
+      game = input("Do you want to continue the game? 'on' for continue anything else to stop")
+  compare()
+
+
+deal_card(2)
+
+"""
