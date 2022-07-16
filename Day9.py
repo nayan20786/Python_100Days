@@ -71,7 +71,7 @@ add_new_country("India", 12, ["Jabalpur", "Jalandhar", "Bangalore"])
 
 # 🚨 Do NOT change the code above
 
-# TODO: Write the function that will allow new countries
+# : Write the function that will allow new countries
 # to be added to the travel_log. 👇
 
 
