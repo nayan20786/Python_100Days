@@ -14,5 +14,6 @@ class QuizBrain:
                 print("Correct:😁Less go dababy")
             else:
                 print("Incorrect")
+            print(f"The Correct Answer is :: {a.answer}")
 
         return is_correct

@@ -7,7 +7,7 @@ from quiz_brain import QuizBrain
 question_back = []
 
 for a in question_data:
-    question = Question(a['text'], a['answer'])
+    question = Question(a['question'], a['correct_answer'])
     question_back.append(question)
 
 quiz = QuizBrain(question_back)
