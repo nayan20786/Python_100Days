@@ -42,6 +42,7 @@ for a in range(11):
         timmy.pu()
         timmy.forward(50)
         timmy.pd()
+
     timmy.pu()
     timmy.setpos(0, 0)
     timmy.position()
