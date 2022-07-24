@@ -10,7 +10,4 @@ then we turn tracer off in screen
 and use update whenever we want to update
 
 
-
-
-
 """

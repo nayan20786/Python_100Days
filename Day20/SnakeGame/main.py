@@ -1,6 +1,18 @@
 import time
 from turtle import Turtle, Screen
 from Snake import Snake
+from Food import Food
+from scoreboard import Scoreboard
+
+# Boundary=Turtle()
+# Boundary.penup()
+# Boundary.goto(300,-300)
+# Boundary.pd()
+# Boundary.color("white")
+# for a in range(4):
+#     Boundary.left(90)
+#     Boundary.forward(600)
+
 
 canvas = Screen()
 canvas.screensize(600, 600)
@@ -9,18 +21,38 @@ canvas.title("Snake Game")
 canvas.tracer(0)
 
 BadGuy = Snake()
+food = Food()
 canvas.listen()
-
+scoreboard = Scoreboard()
 canvas.onkeypress(fun=BadGuy.turn_up, key="Up")
 canvas.onkeypress(fun=BadGuy.turn_left, key="Left")
 canvas.onkeypress(fun=BadGuy.turn_right, key="Right")
 canvas.onkeypress(fun=BadGuy.turn_down, key="Down")
 
+score = 0
 game_on = True
 while game_on:
     canvas.update()
     time.sleep(0.1)
     BadGuy.move()
+
+    if BadGuy.segments[0].distance(food, 1) < 15:
+        food.refresh()
+        score += 1
+        scoreboard.increase_score()
+        BadGuy.extend_segment()
+
+    #     Detect Collision with Wall
+    if BadGuy.segments[0].xcor() > 300 or BadGuy.segments[0].xcor() < -300 or BadGuy.segments[0].ycor() > 300 or \
+            BadGuy.segments[0].ycor() < -300:
+        game_on = False
+        scoreboard.game_over()
+
+    # Detect Collision with Tail
+    for a in BadGuy.segments[1::]:
+        if BadGuy.segments[0].distance(a, 1) < 10:
+            game_on = False
+            scoreboard.game_over()
 
 canvas.exitonclick()
 

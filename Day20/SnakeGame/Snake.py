@@ -1,4 +1,3 @@
-import time
 from turtle import Turtle
 
 
@@ -53,3 +52,19 @@ class Snake:
     def turn_down(self):
         if self.segments[0].heading() != 90:
             self.segments[0].setheading(270)
+
+    def add_segment(self):
+        new_segment = Turtle()
+        new_segment = Turtle(shape="square")
+        new_segment.color("white")
+        new_segment.penup()
+
+        self.segments.append(new_segment)
+        pass
+
+    def extend_segment(self):
+        x = self.segments[len(self.segments) - 1].xcor()
+        y = self.segments[len(self.segments) - 1].ycor()
+        self.add_segment()
+        self.segments[-1].goto(x, y)
+        pass
